@@ -21186,7 +21186,6 @@ var App = React.createClass({
 
 	},
 	render: function() {
-		console.log(this.state)
 		return appTemplate.call(this);;
 	}
 });
@@ -21227,7 +21226,6 @@ var todoListTemplate = require('.././templates/todo_list');
 var Todo = require('./../components/todo');
 
 var onToggle = function(uuid) {
-	console.log(uuid);
 	this.toggle(uuid);
 }
 
@@ -21293,7 +21291,6 @@ module.exports = function() {
 	var TodoApp = _.extend(new EventEmitter(), {
 
 		addTodo: function(title) {
-			// console.log(title);
 			todos.push({
 				id: uuid(),
 				title: title,
@@ -21305,7 +21302,6 @@ module.exports = function() {
 		getTodos: function(nowShowing) {
 			if (arguments.length == 1) {
 				var predicate;
-				console.log(nowShowing);
 				switch (nowShowing) {
 					case appState.ACTIVE:
 						predicate = function(todo) {
@@ -21361,11 +21357,6 @@ module.exports = function() {
 	return TodoApp;
 }
 
-// var todo = module.exports();
-// todo.addChangeListener(function() {
-// 	console.log("change");
-// });
-// todo.addTodo("123");
 },{".././constants/TodoConstant":154,"events":2,"underscore":149}],156:[function(require,module,exports){
 /** @jsx React.DOM */
 var React = require("react");

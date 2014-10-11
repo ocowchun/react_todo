@@ -49,7 +49,6 @@ var App = React.createClass({
 
 	},
 	render: function() {
-		console.log(this.state)
 		return appTemplate.call(this);;
 	}
 });

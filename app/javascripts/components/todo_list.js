@@ -4,7 +4,6 @@ var todoListTemplate = require('.././templates/todo_list');
 var Todo = require('./../components/todo');
 
 var onToggle = function(uuid) {
-	console.log(uuid);
 	this.toggle(uuid);
 }
 
