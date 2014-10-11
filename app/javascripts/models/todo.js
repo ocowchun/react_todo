@@ -1,14 +1,9 @@
 var _ = require('underscore');
 var EventEmitter = require('events').EventEmitter;
 var TODO_CHANGE_EVENT = 'todo_change_event';
-// var TodoApp = function() {
-// 	this.todos = [];
-// 	this.onChanges = [];
-// }
+var appState = require('.././constants/TodoConstant');
 
-// TodoApp.prototype.subscribe = function(onChange) {
-// this.onChange
-// };
+
 var uuid = function() {
 	/*jshint bitwise:false */
 	var i, random;
@@ -41,17 +36,42 @@ module.exports = function() {
 
 			this.emitChange();
 		},
-		getTodos: function() {
-			return todos;
+		getTodos: function(nowShowing) {
+			if (arguments.length == 1) {
+				var predicate;
+				console.log(nowShowing);
+				switch (nowShowing) {
+					case appState.ACTIVE:
+						predicate = function(todo) {
+							return !todo.completed
+						};
+						break;
+					case appState.COMPLETED:
+						predicate = function(todo) {
+							return todo.completed
+						};
+						break;
+					default:
+						predicate = function(todo) {
+							return true
+						};
+						break;
+
+				}
+				return _.filter(todos, predicate);
+			} else {
+				return todos;
+			}
 		},
-		toggle : function(id) {
-			todos =_.map(todos,function(todo) {
+		toggle: function(id) {
+			todos = _.map(todos, function(todo) {
 				return todo.id !== id ?
 					todo :
 					_.extend({}, todo, {
 						completed: !todo.completed
 					});
 			});
+			this.emitChange();
 		},
 		emitChange: function() {
 			this.emit(TODO_CHANGE_EVENT);

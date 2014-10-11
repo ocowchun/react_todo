@@ -1,7 +1,10 @@
 <!-- var todoList=require('./../components/todo_list'); -->
+<!-- var appFooter=require('./../components/footer'); -->
+
 <div>
 	<header id="header">
 		<input type="text" id="new-todo" ref="newField" placeholder="What need to be done?" onKeyDown={this.handleNewTodoKeyDown} />
 	</header>
-	<todoList model={this.props.model}></todoList>
+	<todoList model={this.props.model} state={this.state}></todoList>
+	<appFooter></appFooter>
 </div>
