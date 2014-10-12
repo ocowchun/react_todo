@@ -35,26 +35,18 @@ gulp.task('react', function() {
 
 
 
-
 gulp.task('copy_js', function() {
 	var files = ['app/javascripts/**/*.js', ];
 	return gulp.src(files).pipe(gulp.dest('temp/javascripts'));
 });
 
-gulp.task('copy_html', function() {
-	var files = 'app/*.html';
-	var DEST='dist'
-	return gulp.src(files).pipe(changed(DEST)).pipe(gulp.dest('dist'));
+gulp.task('copy', ['copy_js']function() {
+	var files = ['app/**/*', '!app/javascripts', '!app/javascripts/**/*'];
+	var DEST = 'dist'
+	
+	return gulp.src(files).pipe(changed(DEST)).pipe(gulp.dest(DEST));
 });
 
-
-gulp.task('copy', ['copy_js', 'copy_html'], function() {
-
-});
-
-gulp.task('cp',function  () {
-  gulp.src(['app/javascripts/**/*.js']).pipe(gulp.dest('dist2'))
-});
 
 // using vinyl-source-stream:
 gulp.task('browserify', ['copy', 'react'], function() {
