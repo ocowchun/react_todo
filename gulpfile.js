@@ -5,6 +5,7 @@ var rimraf = require('gulp-rimraf');
 var source = require('vinyl-source-stream');
 var browserify = require('browserify');
 var html2react = require('gulp-html2react');
+var changed = require('gulp-changed');
 
 gulp.task('clean', function() {
 	return gulp.src('dist', {
@@ -34,24 +35,25 @@ gulp.task('react', function() {
 
 
 
-gulp.task('copy_components', function() {
-	var files = 'app/javascripts/components/*.js';
-	return gulp.src(files).pipe(gulp.dest('temp/javascripts/components'));
-});
 
 gulp.task('copy_js', function() {
-	var files = ['app/javascripts/**/*.js',];
+	var files = ['app/javascripts/**/*.js', ];
 	return gulp.src(files).pipe(gulp.dest('temp/javascripts'));
 });
 
 gulp.task('copy_html', function() {
 	var files = 'app/*.html';
-	return gulp.src(files).pipe(gulp.dest('dist'));
+	var DEST='dist'
+	return gulp.src(files).pipe(changed(DEST)).pipe(gulp.dest('dist'));
 });
 
 
-gulp.task('copy', ['copy_components', 'copy_js', 'copy_html'], function() {
+gulp.task('copy', ['copy_js', 'copy_html'], function() {
 
+});
+
+gulp.task('cp',function  () {
+  gulp.src(['app/javascripts/**/*.js']).pipe(gulp.dest('dist2'))
 });
 
 // using vinyl-source-stream:
