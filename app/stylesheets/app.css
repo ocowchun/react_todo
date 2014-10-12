@@ -1,0 +1,10 @@
+body{
+	font-size: 20px;
+}
+.form-control{
+	font-size: 20px;
+}
+
+.breadcrumb>.active>a {
+color: #777;
+}

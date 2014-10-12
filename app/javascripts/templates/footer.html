@@ -1,7 +1,9 @@
+		<!-- var cx = require("react/addons").addons.classSet; -->
+
 <footer id="footer">
-	<ul id="filters">
-		<li><a href="#/">All</a></li>
-		<li><a href="#/active">Active</a></li>
-		<li><a href="#/completed">Completed</a></li>
-	</ul>
+	<ol id="filters" className="breadcrumb">
+		<li className={cx({active:this.props.state.nowShowing==='all'})}><a href="#/">All</a></li>
+		<li className={cx({active:this.props.state.nowShowing==='active'})}><a href="#/active">Active</a></li>
+		<li className={cx({active:this.props.state.nowShowing==='completed'})}><a href="#/completed">Completed</a></li>
+	</ol>
 </footer>
