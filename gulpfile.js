@@ -32,7 +32,7 @@ gulp.task('react', function() {
 });
 
 gulp.task('copy_js', function() {
-	var files = ['app/javascripts/**/*.js','!app/javascripts/bower_components','!app/javascripts/bower_components/**/*' ];
+	var files = ['app/javascripts/**/*.js'];
 	return gulp.src(files).pipe(gulp.dest('temp/javascripts'));
 });
 
