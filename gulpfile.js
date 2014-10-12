@@ -32,7 +32,7 @@ gulp.task('react', function() {
 });
 
 gulp.task('copy_js', function() {
-	var files = ['app/javascripts/**/*.js','!app/javascripts/bower_components','!app/javascripts/bower_components/**/*' ];
+	var files = ['app/javascripts/**/*.js'];
 	return gulp.src(files).pipe(gulp.dest('temp/javascripts'));
 });
 
@@ -54,6 +54,8 @@ gulp.task('browserify', ['copy', 'react'], function() {
 });
 
 gulp.task('default', ['browserify', 'browserSync'], function() {
-	gulp.watch('app/*.html', ['copy_html']);
+	gulp.watch('app/*.html', ['copy']);
+	gulp.watch('app/stylesheets/**/*', ['copy']);
+
 	gulp.watch('app/javascripts/**/*', ['browserify']);
 });

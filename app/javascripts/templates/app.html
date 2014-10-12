@@ -3,8 +3,9 @@
 
 <div>
 	<header id="header">
-		<input type="text" id="new-todo" ref="newField" placeholder="What need to be done?" onKeyDown={this.handleNewTodoKeyDown} />
+	
+		<input type="text" id="new-todo" ref="newField" placeholder="What need to be done?" onKeyDown={this.handleNewTodoKeyDown} className="form-control" />
 	</header>
 	<todoList model={this.props.model} state={this.state}></todoList>
-	<appFooter></appFooter>
+	<appFooter state={this.state}></appFooter>
 </div>
