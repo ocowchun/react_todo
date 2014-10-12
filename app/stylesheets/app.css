@@ -8,3 +8,11 @@ body{
 .breadcrumb>.active>a {
 color: #777;
 }
+
+li{
+	list-style: none;
+}
+
+li>span{
+	margin-left: 10px;
+}
